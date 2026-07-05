@@ -51,13 +51,13 @@ export function Navbar() {
   const linkHover = scrolled ? "hover:text-[var(--color-primary)]" : "hover:text-gray-300";
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-6 pt-6 md:px-12 lg:px-16">
+    <header className="fixed inset-x-0 top-0 z-50">
       <div
-        className={`flex items-center justify-between rounded-xl px-4 py-2 transition-colors duration-300 ${chrome}`}
+        className={`flex items-center justify-between px-6 py-4 transition-colors duration-300 md:px-12 lg:px-16 ${chrome}`}
       >
         <Link
           href="/"
-          className="relative h-8 w-[120px] shrink-0 overflow-hidden md:h-9 md:w-[135px]"
+          className="relative h-9 w-[130px] shrink-0 overflow-hidden md:h-10 md:w-[148px]"
           aria-label="Sindur Group home"
         >
           <Image
@@ -65,7 +65,7 @@ export function Navbar() {
             alt="Sindur Group"
             width={3789}
             height={1580}
-            className="absolute left-0 top-0 h-[159%] w-auto max-w-none object-contain"
+            className="absolute left-0 top-0 h-[148%] w-auto max-w-none object-contain"
             priority
           />
         </Link>
@@ -99,7 +99,7 @@ export function Navbar() {
 
             {projectsOpen && (
               <div
-                className={`absolute left-1/2 top-full mt-3 w-56 -translate-x-1/2 rounded-xl p-2 shadow-lg transition-colors ${
+                className={`absolute left-1/2 top-full mt-3 w-56 -translate-x-1/2 p-2 shadow-lg transition-colors ${
                   scrolled ? "liquid-glass-light" : "liquid-glass"
                 }`}
               >
@@ -129,7 +129,7 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <Link
             href="/contact"
-            className="hidden rounded-lg bg-white px-6 py-2 text-sm font-medium text-black transition-colors hover:bg-gray-100 sm:inline-block"
+            className="hidden rounded-full bg-white px-6 py-2 text-sm font-medium text-black transition-colors hover:bg-gray-100 sm:inline-block"
           >
             Enquire Now
           </Link>
@@ -154,7 +154,7 @@ export function Navbar() {
 
       {mobileOpen && (
         <div
-          className={`mt-2 rounded-xl p-4 text-sm transition-colors md:hidden ${
+          className={`px-6 pb-4 text-sm transition-colors md:hidden ${
             scrolled ? "liquid-glass-light text-[var(--color-ink)]" : "liquid-glass text-white"
           }`}
         >
@@ -193,7 +193,7 @@ export function Navbar() {
             <Link
               href="/contact"
               onClick={() => setMobileOpen(false)}
-              className="mt-2 rounded-lg bg-white px-4 py-2.5 text-center font-medium text-black"
+              className="mt-2 rounded-full bg-white px-4 py-2.5 text-center font-medium text-black"
             >
               Enquire Now
             </Link>

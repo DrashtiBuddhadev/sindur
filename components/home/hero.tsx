@@ -59,13 +59,13 @@ export function Hero() {
             <FadeIn delay={1.2} className="flex flex-wrap gap-4">
               <Link
                 href="/projects"
-                className="rounded-lg bg-white px-8 py-3 font-medium text-black transition-colors hover:bg-gray-100"
+                className="rounded-full bg-white px-8 py-3 font-medium text-black transition-colors hover:bg-gray-100"
               >
                 Explore Our Projects →
               </Link>
               <Link
                 href="/contact"
-                className="liquid-glass rounded-lg border border-white/20 px-8 py-3 font-medium text-white transition-colors hover:bg-white hover:text-black"
+                className="liquid-glass rounded-full border border-white/20 px-8 py-3 font-medium text-white transition-colors hover:bg-white hover:text-black"
               >
                 Enquire Now
               </Link>
