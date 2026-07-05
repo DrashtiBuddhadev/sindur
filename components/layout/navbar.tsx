@@ -1,0 +1,205 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+
+const PROJECT_CATEGORIES = [
+  { label: "Residential", href: "/projects#residential" },
+  { label: "Commercial", href: "/projects#commercial" },
+  { label: "PG / Studio Living", href: "/projects#pg" },
+  { label: "Plots", href: "/projects#plots" },
+];
+
+const NAV_LINKS = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+];
+
+const TRAILING_LINKS = [
+  { label: "Contact Us", href: "/contact" },
+  { label: "Careers", href: "/careers" },
+];
+
+export function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [projectsOpen, setProjectsOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setProjectsOpen(false);
+      }
+    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, []);
+
+  const chrome = scrolled
+    ? "liquid-glass-light text-[var(--color-ink)]"
+    : "liquid-glass text-white";
+
+  const linkHover = scrolled ? "hover:text-[var(--color-primary)]" : "hover:text-gray-300";
+
+  return (
+    <header className="fixed inset-x-0 top-0 z-50 px-6 pt-6 md:px-12 lg:px-16">
+      <div
+        className={`flex items-center justify-between rounded-xl px-4 py-2 transition-colors duration-300 ${chrome}`}
+      >
+        <Link
+          href="/"
+          className="relative h-8 w-[120px] shrink-0 overflow-hidden md:h-9 md:w-[135px]"
+          aria-label="Sindur Group home"
+        >
+          <Image
+            src={scrolled ? "/sindur_logo.png" : "/images/sindur-logo-1.png"}
+            alt="Sindur Group"
+            width={3789}
+            height={1580}
+            className="absolute left-0 top-0 h-[159%] w-auto max-w-none object-contain"
+            priority
+          />
+        </Link>
+
+        <nav className="hidden items-center gap-8 text-sm md:flex">
+          {NAV_LINKS.map((link) => (
+            <Link key={link.href} href={link.href} className={`transition-colors duration-200 ${linkHover}`}>
+              {link.label}
+            </Link>
+          ))}
+
+          <div className="relative" ref={dropdownRef}>
+            <button
+              type="button"
+              onClick={() => setProjectsOpen((v) => !v)}
+              aria-expanded={projectsOpen}
+              aria-haspopup="true"
+              className={`flex items-center gap-1 transition-colors duration-200 cursor-pointer ${linkHover}`}
+            >
+              Projects
+              <svg
+                width="10"
+                height="10"
+                viewBox="0 0 10 10"
+                fill="none"
+                className={`transition-transform duration-200 ${projectsOpen ? "rotate-180" : ""}`}
+              >
+                <path d="M1.5 3.5L5 7l3.5-3.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+              </svg>
+            </button>
+
+            {projectsOpen && (
+              <div
+                className={`absolute left-1/2 top-full mt-3 w-56 -translate-x-1/2 rounded-xl p-2 shadow-lg transition-colors ${
+                  scrolled ? "liquid-glass-light" : "liquid-glass"
+                }`}
+              >
+                {PROJECT_CATEGORIES.map((cat) => (
+                  <Link
+                    key={cat.href}
+                    href={cat.href}
+                    onClick={() => setProjectsOpen(false)}
+                    className={`block rounded-lg px-3 py-2 text-sm transition-colors ${
+                      scrolled ? "hover:bg-black/5" : "hover:bg-white/10"
+                    }`}
+                  >
+                    {cat.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {TRAILING_LINKS.map((link) => (
+            <Link key={link.href} href={link.href} className={`transition-colors duration-200 ${linkHover}`}>
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-3">
+          <Link
+            href="/contact"
+            className="hidden rounded-lg bg-white px-6 py-2 text-sm font-medium text-black transition-colors hover:bg-gray-100 sm:inline-block"
+          >
+            Enquire Now
+          </Link>
+          <button
+            type="button"
+            onClick={() => setMobileOpen((v) => !v)}
+            aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
+            className="flex h-9 w-9 items-center justify-center rounded-full md:hidden"
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path
+                d={mobileOpen ? "M3 3l12 12M15 3L3 15" : "M2 4.5h14M2 9h14M2 13.5h14"}
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {mobileOpen && (
+        <div
+          className={`mt-2 rounded-xl p-4 text-sm transition-colors md:hidden ${
+            scrolled ? "liquid-glass-light text-[var(--color-ink)]" : "liquid-glass text-white"
+          }`}
+        >
+          <div className="flex flex-col gap-1">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="rounded-lg px-3 py-2.5"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <span className="px-3 pt-2 pb-1 text-xs uppercase tracking-widest opacity-60">Projects</span>
+            {PROJECT_CATEGORIES.map((cat) => (
+              <Link
+                key={cat.href}
+                href={cat.href}
+                onClick={() => setMobileOpen(false)}
+                className="rounded-lg px-6 py-2"
+              >
+                {cat.label}
+              </Link>
+            ))}
+            {TRAILING_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="rounded-lg px-3 py-2.5"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Link
+              href="/contact"
+              onClick={() => setMobileOpen(false)}
+              className="mt-2 rounded-lg bg-white px-4 py-2.5 text-center font-medium text-black"
+            >
+              Enquire Now
+            </Link>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}
