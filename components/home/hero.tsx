@@ -65,7 +65,7 @@ export function Hero() {
               </Link>
               <Link
                 href="/contact"
-                className="liquid-glass rounded-full border border-white/20 px-8 py-3 font-medium text-white transition-colors hover:bg-white hover:text-black"
+                className="liquid-glass relative rounded-full border border-white/20 px-8 py-3 font-medium text-white transition-colors hover:bg-white hover:text-black"
               >
                 Enquire Now
               </Link>
@@ -74,7 +74,7 @@ export function Hero() {
 
           <div className="mt-8 flex items-end justify-start lg:mt-0 lg:justify-end">
             <FadeIn delay={1.4}>
-              <div className="liquid-glass rounded-xl border border-white/20 px-6 py-3">
+              <div className="liquid-glass relative rounded-xl border border-white/20 px-6 py-3">
                 <p className="text-md font-light text-white md:text-md lg:text-lg">
                   Residential · Commercial · PG · Plots
                 </p>

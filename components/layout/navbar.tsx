@@ -5,10 +5,10 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 const PROJECT_CATEGORIES = [
-  { label: "Residential", href: "/projects#residential" },
-  { label: "Commercial", href: "/projects#commercial" },
-  { label: "PG / Studio Living", href: "/projects#pg" },
-  { label: "Plots", href: "/projects#plots" },
+  { label: "Residential", href: "/projects?category=residential" },
+  { label: "Commercial", href: "/projects?category=commercial" },
+  { label: "PG / Studio Living", href: "/projects?category=pg" },
+  { label: "Plots", href: "/projects?category=plots" },
 ];
 
 const NAV_LINKS = [
@@ -53,7 +53,7 @@ export function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div
-        className={`flex items-center justify-between px-6 py-4 transition-colors duration-300 md:px-12 lg:px-16 ${chrome}`}
+        className={`relative flex items-center justify-between px-6 py-4 transition-colors duration-300 md:px-12 lg:px-16 ${chrome}`}
       >
         <Link
           href="/"
@@ -77,15 +77,18 @@ export function Navbar() {
             </Link>
           ))}
 
-          <div className="relative" ref={dropdownRef}>
+          <div className="relative flex items-center gap-1" ref={dropdownRef}>
+            <Link href="/projects" className={`transition-colors duration-200 ${linkHover}`}>
+              Projects
+            </Link>
             <button
               type="button"
               onClick={() => setProjectsOpen((v) => !v)}
               aria-expanded={projectsOpen}
               aria-haspopup="true"
-              className={`flex items-center gap-1 transition-colors duration-200 cursor-pointer ${linkHover}`}
+              aria-label="Toggle projects menu"
+              className={`flex items-center transition-colors duration-200 cursor-pointer ${linkHover}`}
             >
-              Projects
               <svg
                 width="10"
                 height="10"
@@ -154,7 +157,7 @@ export function Navbar() {
 
       {mobileOpen && (
         <div
-          className={`px-6 pb-4 text-sm transition-colors md:hidden ${
+          className={`relative px-6 pb-4 text-sm transition-colors md:hidden ${
             scrolled ? "liquid-glass-light text-[var(--color-ink)]" : "liquid-glass text-white"
           }`}
         >
@@ -169,7 +172,13 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <span className="px-3 pt-2 pb-1 text-xs uppercase tracking-widest opacity-60">Projects</span>
+            <Link
+              href="/projects"
+              onClick={() => setMobileOpen(false)}
+              className="px-3 pt-2 pb-1 text-xs uppercase tracking-widest opacity-60"
+            >
+              Projects
+            </Link>
             {PROJECT_CATEGORIES.map((cat) => (
               <Link
                 key={cat.href}
