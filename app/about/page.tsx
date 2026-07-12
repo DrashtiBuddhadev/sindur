@@ -21,7 +21,7 @@ export default function AboutPage() {
       <main>
         <AboutHero />
         <AboutStory />
-        <HistoryTimeline />
+        {/* <HistoryTimeline /> */}
         <VisionMissionPhilosophy />
         <TeamSpotlight />
         <AboutCta />
