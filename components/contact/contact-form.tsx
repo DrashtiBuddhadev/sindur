@@ -41,10 +41,31 @@ export function ContactForm({ variant = "contact" }: { variant?: "contact" | "ca
   const isCareers = variant === "careers";
   const [fileName, setFileName] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    setError(null);
+    setIsSubmitting(true);
+
+    try {
+      const formData = new FormData(e.currentTarget);
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) {
+        throw new Error("Request failed");
+      }
+
+      setSubmitted(true);
+    } catch {
+      setError("Something went wrong. Please try again or contact us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -158,11 +179,16 @@ export function ContactForm({ variant = "contact" }: { variant?: "contact" | "ca
                 />
               </div>
 
+              {error && (
+                <p className="text-sm text-red-500 sm:col-span-2">{error}</p>
+              )}
+
               <button
                 type="submit"
-                className="rounded-full bg-[var(--color-ink)] px-8 py-3 font-medium text-[var(--color-bg)] transition-colors hover:opacity-90 sm:col-span-2"
+                disabled={isSubmitting}
+                className="rounded-full bg-[var(--color-ink)] px-8 py-3 font-medium text-[var(--color-bg)] transition-colors hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 sm:col-span-2"
               >
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
             </form>
           )}
