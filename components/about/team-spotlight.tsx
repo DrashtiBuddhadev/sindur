@@ -11,21 +11,21 @@ const PARTNERS = [
     name: "Mr. Ketul Patel",
     role: 'Founder — "Munnabhai"',
     bio: 'Ask around Naranpura, and you won’t hear "Mr. Patel" — you’ll hear Munnabhai. Ketul Patel founded Sindur Group with a dream of creating landmark residential and commercial projects in Ahmedabad, inspired by a rare pairing: urban comfort and green living.',
-    image: "/images/Modern Luxury House at Dusk.png",
+    image: "/images/ketulbhai_real.png",
   },
   {
     initials: "AP",
     name: "Mr. Akash Patel",
     role: "Partner",
     bio: "Akash Patel co-drives Sindur Group's growth across Ahmedabad, bringing the same discipline and trust that shaped the group's first decade to every new address.",
-    image: "/images/Modern Cantilevered House.png",
+    image: "/images/akashbhai.png",
   },
   {
     initials: "DP",
     name: "Mr. Darshan Patel",
     role: "Partner",
     bio: "Darshan Patel helps steer Sindur Group's projects from concept to keys-in-hand, keeping quality and customer trust at the centre of every decision.",
-    image: "/images/Modern Art Gallery with Abstract Artworks.png",
+    image: "/images/darshanbhai.jpeg",
   },
 ];
 

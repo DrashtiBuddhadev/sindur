@@ -2,37 +2,43 @@ import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/motion/reveal";
 import { ArrowIcon } from "@/components/ui/arrow-icon";
+import { getProjectBySlug } from "@/lib/projects";
+
+const anala = getProjectBySlug("sindur-anala")!;
+const saamarthya = getProjectBySlug("sindur-saamarthya")!;
+const spectrum = getProjectBySlug("sindur-spectrum")!;
+const vienna = getProjectBySlug("sindur-vienna")!;
 
 const CATEGORIES = [
   {
     label: "Residential",
     copy: "Thoughtfully planned apartments and homes built for modern living, from Akhbar Nagar to Naranpura. Every project pairs spacious layouts with dedicated EV charging, landscaped gardens, and round-the-clock security — the everyday comforts that turn a house into a home.",
     linkLabel: "Our residential projects",
-    imageLarge: "/images/Modern House at Twilight.png",
-    imageSmall: "/images/Modern Cantilevered House.png",
+    imageLarge: anala.images[0],
+    imageSmall: saamarthya.images[0],
     href: "/projects#residential",
   },
   {
     label: "Commercial",
     copy: "Business spaces at prime Ahmedabad locations including S.P. Ring Road and Shilaj, designed to work as hard as you do. From showrooms to corner-plot offices, each address is built for visibility, footfall, and long-term value.",
     linkLabel: "Our commercial projects",
-    imageLarge: "/images/Modern Art Gallery with Abstract Artworks.png",
-    imageSmall: "/images/Modern Luxury House at Dusk.png",
+    imageLarge: spectrum.images[0],
+    imageSmall: spectrum.images[3],
     href: "/projects#commercial",
   },
   {
     label: "PG / Studio Living",
     copy: "Exclusive studio PG accommodation at Ambawadi, redefining managed living for young professionals. Fully furnished rooms, on-site amenities, and assured rental returns make it a home for residents and a dependable investment for owners.",
     linkLabel: "Our PG residences",
-    imageLarge: "/images/Serene Mid-Century Modern Interior.png",
-    imageSmall: "/images/Modern House at Twilight.png",
+    imageLarge: vienna.images[0],
+    imageSmall: vienna.images[1],
     href: "/projects#pg",
   },
   {
     label: "Plots",
     copy: "Well-located land parcels for those who want to build their own vision. Low-density, club-class developments just outside the city offer room to grow — ideal for weekend homes, farmhouses, or a long-term investment in land.",
     linkLabel: "Our plotted developments",
-    imageLarge: "/images/Modern Desert Home.png",
+    imageLarge: "/images/Modern Cantilevered House.png",
     imageSmall: "/images/Modern Cantilevered House.png",
     href: "/projects#plots",
   },

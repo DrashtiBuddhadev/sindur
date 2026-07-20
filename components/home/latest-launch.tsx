@@ -6,28 +6,33 @@ import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/motion/reveal";
 import { ArrowIcon } from "@/components/ui/arrow-icon";
+import { getProjectBySlug } from "@/lib/projects";
+
+const anala = getProjectBySlug("sindur-anala")!;
+const vienna = getProjectBySlug("sindur-vienna")!;
+const amulyam = getProjectBySlug("sindur-amulyam")!;
 
 const LAUNCHES = [
   {
-    label: "Naranpura, Ahmedabad",
-    title: "Coming Up Next in Naranpura.",
-    copy: "Our next landmark rises in the heart of Naranpura — the neighbourhood where our story began. Designed with the same philosophy that shaped every Sindur project: modern comfort, eco-conscious construction, and spaces that hold their value for generations.",
-    image: "/images/Modern Luxury House at Dusk.png",
-    href: "/contact",
+    label: anala.location,
+    title: anala.name,
+    copy: anala.tagline,
+    image: anala.images[0],
+    href: `/projects/${anala.slug}`,
   },
   {
-    label: "Naranpura, Ahmedabad",
-    title: "Sindur Saamarthya",
-    copy: "A signature luxury address with a G+11 single tower and only 42 exclusive units. The sample house is ready, and possession can be offered within a short timeframe.",
-    image: "/images/Modern House at Twilight.png",
-    href: "/contact",
+    label: vienna.location,
+    title: vienna.name,
+    copy: vienna.tagline,
+    image: vienna.images[0],
+    href: `/projects/${vienna.slug}`,
   },
   {
-    label: "Beside Sports Complex, Naranpura",
-    title: "Sindur Anala",
-    copy: "3 BHK lifestyle homes and 4 BHK penthouses across only 86 exclusive units, with a podium living concept and no common walls for complete privacy.",
-    image: "/images/Modern Cantilevered House.png",
-    href: "/contact",
+    label: amulyam.location,
+    title: amulyam.name,
+    copy: amulyam.tagline,
+    image: amulyam.images[0],
+    href: `/projects/${amulyam.slug}`,
   },
 ];
 
