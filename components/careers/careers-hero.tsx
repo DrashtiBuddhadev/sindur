@@ -14,7 +14,10 @@ export function CareersHero() {
       <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/30" />
 
       <div className="relative z-10 px-6 pb-12 md:px-12 lg:px-16 lg:pb-16">
-        <p className="font-display text-2xl text-white md:text-3xl lg:text-4xl">
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.1em] text-white/60">
+          Careers
+        </p>
+        <p className="font-display text-2xl font-semibold text-white md:text-3xl lg:text-4xl">
           Are you looking to work with us?
         </p>
       </div>

@@ -20,7 +20,7 @@ function FilterButton({
     <button
       type="button"
       onClick={onClick}
-      className={`rounded-full border px-5 py-2 text-xs uppercase tracking-[0.15em] transition-colors ${
+      className={`rounded-full border px-5 py-2 text-xs font-semibold uppercase tracking-[0.08em] transition-colors ${
         active
           ? "border-[var(--color-primary)] bg-[var(--color-primary)] text-white"
           : "border-[var(--color-border)] text-[var(--color-muted)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"

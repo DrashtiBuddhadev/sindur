@@ -33,7 +33,7 @@ export function ProjectsHero() {
       <div className="relative z-10">
         <AnimatedHeading
           text={"Landmarks in the\nMaking Across Ahmedabad."}
-          className="max-w-4xl font-display font-medium text-3xl leading-[1.15] text-white md:text-4xl lg:text-5xl xl:text-6xl"
+          className="max-w-4xl font-display font-semibold text-3xl leading-[1.15] text-white md:text-4xl lg:text-5xl xl:text-6xl"
         />
 
         <div className="mt-8">

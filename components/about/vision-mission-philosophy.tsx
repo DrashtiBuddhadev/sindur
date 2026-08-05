@@ -70,10 +70,10 @@ export function VisionMissionPhilosophy() {
         <Reveal className="flex flex-col gap-6 md:flex-row md:items-stretch">
           <div className="flex flex-col justify-between gap-10 md:w-[38%]">
             <div>
-              <p className="mb-3 text-xs uppercase tracking-[0.2em] text-white/50">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.1em] text-white/50">
                 What Drives Us
               </p>
-              <h2 className="font-display text-3xl leading-tight text-white md:text-4xl lg:text-5xl">
+              <h2 className="font-display text-3xl font-semibold leading-tight text-white md:text-4xl lg:text-5xl">
                 Vision, Mission &amp; Philosophy.
               </h2>
             </div>
@@ -87,10 +87,10 @@ export function VisionMissionPhilosophy() {
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.35, ease: "easeOut" }}
                 >
-                  <span className="font-display text-xs text-white/40">
+                  <span className="font-display text-xs font-medium text-white/40">
                     {String(active + 1).padStart(2, "0")} / {String(PILLARS.length).padStart(2, "0")}
                   </span>
-                  <h3 className="mt-2 font-display text-xl text-white md:text-2xl">
+                  <h3 className="mt-2 font-display text-xl font-semibold text-white md:text-2xl">
                     {current.label}
                   </h3>
                   <p className="mt-4 max-w-sm text-sm leading-[1.75] text-white/60 md:text-base">
@@ -106,7 +106,7 @@ export function VisionMissionPhilosophy() {
             </div>
           </div>
 
-          <div className="relative -mt-[12px] -mr-[12px] -mb-[12px] min-h-[360px] w-full overflow-hidden md:w-[62%]">
+          <div className="relative min-h-[360px] w-full overflow-hidden border border-white/10 md:w-[62%]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current.image}

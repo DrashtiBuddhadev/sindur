@@ -14,7 +14,7 @@ const DESIGNATIONS = [
 
 const inputClass =
   "border border-[var(--color-border)] bg-transparent px-4 py-3 text-sm text-[var(--color-ink)] transition-colors placeholder:text-[var(--color-muted)] focus:border-[var(--color-primary)] focus:outline-none";
-const labelClass = "text-xs uppercase tracking-[0.15em] text-[var(--color-muted)]";
+const labelClass = "text-xs font-medium uppercase tracking-[0.08em] text-[var(--color-muted)]";
 
 function Field({
   label,
@@ -72,10 +72,10 @@ export function ContactForm({ variant = "contact" }: { variant?: "contact" | "ca
     <section className="bg-[var(--color-bg)] px-6 py-20 md:px-12 md:py-28 lg:px-16">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 md:grid-cols-[1fr_1.3fr] md:gap-16">
         <Reveal>
-          <p className="mb-3 text-xs uppercase tracking-[0.2em] text-[var(--color-primary)]">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.1em] text-[var(--color-primary)]">
             {isCareers ? "Careers" : "Get In Touch"}
           </p>
-          <h2 className="font-display text-3xl leading-tight text-[var(--color-ink)] md:text-4xl">
+          <h2 className="font-display text-3xl font-semibold leading-tight text-[var(--color-ink)] md:text-4xl">
             {isCareers ? "Join Our Team." : "Tell Us What You're Looking For."}
           </h2>
           <p className="mt-6 max-w-sm text-sm leading-[1.8] text-[var(--color-muted)] md:text-base">
@@ -99,7 +99,7 @@ export function ContactForm({ variant = "contact" }: { variant?: "contact" | "ca
         <Reveal delay={0.1} className="border border-[var(--color-border)] p-6 md:p-10">
           {submitted ? (
             <div className="flex min-h-[420px] flex-col items-center justify-center text-center">
-              <p className="font-display text-2xl text-[var(--color-ink)]">Thank you.</p>
+              <p className="font-display text-2xl font-semibold text-[var(--color-ink)]">Thank you.</p>
               <p className="mt-3 max-w-xs text-sm leading-relaxed text-[var(--color-muted)]">
                 We&apos;ve received your details and will be in touch soon.
               </p>
@@ -149,7 +149,7 @@ export function ContactForm({ variant = "contact" }: { variant?: "contact" | "ca
                       className="flex cursor-pointer items-center justify-between border border-dashed border-[var(--color-border)] px-4 py-3 text-sm text-[var(--color-muted)] transition-colors hover:border-[var(--color-primary)]"
                     >
                       <span className="truncate">{fileName ?? "Choose a file (PDF, DOC)"}</span>
-                      <span className="ml-4 shrink-0 rounded-full border border-[var(--color-border)] px-3 py-1 text-xs uppercase tracking-widest text-[var(--color-ink)]">
+                      <span className="ml-4 shrink-0 rounded-full border border-[var(--color-border)] px-3 py-1 text-xs font-medium uppercase tracking-[0.08em] text-[var(--color-ink)]">
                         Browse
                       </span>
                     </label>

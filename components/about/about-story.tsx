@@ -22,10 +22,10 @@ export function AboutStory() {
     <section className="bg-[var(--color-bg)] px-6 py-20 md:px-12 md:py-28 lg:px-16">
       <div className="mx-auto max-w-6xl">
         <Reveal className="mb-14">
-          <p className="mb-3 text-xs uppercase tracking-[0.2em] text-[var(--color-primary)]">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.1em] text-[var(--color-primary)]">
             About Sindur
           </p>
-          <h2 className="whitespace-nowrap font-display text-2xl leading-tight text-[var(--color-ink)] sm:text-3xl md:text-4xl lg:text-5xl">
+          <h2 className="whitespace-nowrap font-display text-2xl font-semibold leading-tight text-[var(--color-ink)] sm:text-3xl md:text-4xl lg:text-5xl">
             More Than a Developer.
           </h2>
         </Reveal>
@@ -37,10 +37,10 @@ export function AboutStory() {
                 key={stat.label}
                 className="border border-[var(--color-border)] p-4 md:p-5"
               >
-                <p className="font-display text-2xl text-[var(--color-primary)] md:text-3xl">
+                <p className="font-display text-2xl font-semibold text-[var(--color-primary)] md:text-3xl">
                   <CountUp value={stat.value} suffix={stat.suffix} />
                 </p>
-                <p className="mt-1 text-[11px] uppercase tracking-widest text-[var(--color-muted)] md:text-xs">
+                <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--color-muted)] md:text-xs">
                   {stat.label}
                 </p>
               </div>

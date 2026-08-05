@@ -44,7 +44,7 @@ export function ProjectHero({ project }: { project: Project }) {
       <div className="relative z-10 w-full px-6 pb-12 md:px-12 lg:px-16 lg:pb-16">
         <FadeIn
           delay={0.1}
-          className="mb-5 flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-white/60"
+          className="mb-5 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.1em] text-white/60"
         >
           <Link href="/projects" className="hover:text-white">
             Projects
@@ -55,7 +55,7 @@ export function ProjectHero({ project }: { project: Project }) {
 
         <AnimatedHeading
           text={`${project.name}.`}
-          className="max-w-3xl font-display font-medium text-3xl leading-[1.15] text-white md:text-4xl lg:text-5xl"
+          className="max-w-3xl font-display font-semibold text-3xl leading-[1.15] text-white md:text-4xl lg:text-5xl"
         />
 
         <FadeIn
@@ -69,13 +69,13 @@ export function ProjectHero({ project }: { project: Project }) {
           <a
             href={`/brochures/${project.slug}.pdf`}
             download
-            className="rounded-full bg-white px-7 py-3 text-xs font-medium uppercase tracking-[0.12em] text-black transition-colors hover:bg-gray-100"
+            className="rounded-full bg-white px-7 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-black transition-colors hover:bg-gray-100"
           >
             Download Brochure
           </a>
           <Link
             href="/contact"
-            className="group inline-flex items-center gap-3 rounded-full border border-white/30 px-7 py-3 text-xs font-medium uppercase tracking-[0.12em] text-white transition-colors hover:bg-white hover:text-black"
+            className="group inline-flex items-center gap-3 rounded-full border border-white/30 px-7 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-white transition-colors hover:bg-white hover:text-black"
           >
             <span>Enquire Now</span>
             <ArrowIcon className="-mb-px transition-transform duration-300 group-hover:translate-x-1" />

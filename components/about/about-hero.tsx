@@ -41,7 +41,7 @@ export function AboutHero() {
       <div className="relative z-10 mx-auto max-w-6xl">
         <FadeIn
           delay={0.1}
-          className="mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-white/50"
+          className="mb-6 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.1em] text-white/50"
         >
           <span>About Us</span>
           <span className="h-1 w-1 rounded-full bg-white/30" />
@@ -50,7 +50,7 @@ export function AboutHero() {
 
         <AnimatedHeading
           text={"Ten Years. 1000+ Homes.\nOne Promise Kept."}
-          className="max-w-4xl font-display font-medium text-3xl leading-[1.15] text-white md:text-4xl lg:text-5xl xl:text-6xl"
+          className="max-w-4xl font-display font-semibold text-3xl leading-[1.15] text-white md:text-4xl lg:text-5xl xl:text-6xl"
         />
 
         <div className="mt-10 grid grid-cols-1 md:grid-cols-[minmax(0,0.7fr)_minmax(0,2fr)] md:gap-8 lg:mt-14">

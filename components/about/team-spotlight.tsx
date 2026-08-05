@@ -67,10 +67,10 @@ export function TeamSpotlight() {
     <section className="bg-[var(--color-bg)] px-6 py-20 md:px-12 md:py-28 lg:px-16">
       <div className="mx-auto max-w-6xl">
         <Reveal className="mb-14 max-w-xl">
-          <p className="mb-3 text-xs uppercase tracking-[0.2em] text-[var(--color-primary)]">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.1em] text-[var(--color-primary)]">
             Leadership
           </p>
-          <h2 className="font-display text-3xl leading-tight text-[var(--color-ink)] md:text-4xl lg:text-5xl">
+          <h2 className="font-display text-3xl font-semibold leading-tight text-[var(--color-ink)] md:text-4xl lg:text-5xl">
             Co-Creators of Success.
           </h2>
         </Reveal>
@@ -96,10 +96,10 @@ export function TeamSpotlight() {
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.35, ease: "easeOut" }}
                 >
-                  <h3 className="font-display text-xl text-[var(--color-ink)] md:text-2xl">
+                  <h3 className="font-display text-xl font-semibold text-[var(--color-ink)] md:text-2xl">
                     {person.name}
                   </h3>
-                  <p className="mt-1 text-xs uppercase tracking-[0.15em] text-[var(--color-muted)]">
+                  <p className="mt-1 text-xs font-medium uppercase tracking-[0.08em] text-[var(--color-muted)]">
                     {person.role}
                   </p>
                   <p className="mt-4 max-w-sm text-sm leading-[1.75] text-[var(--color-muted)] md:text-base">
@@ -140,8 +140,8 @@ export function TeamSpotlight() {
                   {person.initials}
                 </span>
                 <div className="absolute bottom-6 left-6">
-                  <p className="font-display text-lg text-white md:text-xl">{person.name}</p>
-                  <p className="text-xs uppercase tracking-[0.15em] text-white/70">
+                  <p className="font-display text-lg font-semibold text-white md:text-xl">{person.name}</p>
+                  <p className="text-xs font-medium uppercase tracking-[0.08em] text-white/70">
                     {person.role}
                   </p>
                 </div>
