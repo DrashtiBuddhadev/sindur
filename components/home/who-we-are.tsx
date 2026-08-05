@@ -26,7 +26,7 @@ export function WhoWeAre() {
             className="relative mt-10 aspect-[3/4] w-full max-w-xs overflow-hidden md:mt-auto md:max-w-none"
           >
             <Image
-              src="/images/SAAMARTHYA HD IMAGES/nightview.jpg"
+              src="https://res.cloudinary.com/djpswxx2l/image/upload/w_1200,q_auto,f_auto/v1784461257/Nightview_ycklsf.jpg"
               alt="Inside a Sindur Group residence"
               fill
               sizes="(min-width: 768px) 30vw, 80vw"
@@ -50,7 +50,7 @@ export function WhoWeAre() {
             className="relative aspect-[16/10] w-full overflow-hidden"
           >
             <Image
-              src="/images/SPECTRUM HD IMAGES/view_01.jpg"
+              src="https://res.cloudinary.com/djpswxx2l/image/upload/w_1600,q_auto,f_auto/v1784463696/view_01_ghg8pq.jpg"
               alt="Aerial view of a Sindur Group residential project"
               fill
               sizes="(min-width: 768px) 60vw, 90vw"
