@@ -27,17 +27,17 @@ export function ProjectCard({
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
           {showTag && categoryLabel && (
-            <span className="absolute left-3 top-3 rounded-full bg-black/60 px-3 py-1 text-[10px] uppercase tracking-[0.15em] text-white backdrop-blur-sm">
+            <span className="absolute left-3 top-3 rounded-full bg-black/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.08em] text-white backdrop-blur-sm">
               {categoryLabel}
             </span>
           )}
         </div>
         <div className="mt-4 flex items-start justify-between gap-4 border border-[var(--color-border)] p-4">
           <div>
-            <p className="mb-1 text-[10px] uppercase tracking-[0.2em] text-[var(--color-muted)]">
+            <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--color-muted)]">
               Project
             </p>
-            <h3 className="font-display text-lg text-[var(--color-ink)] md:text-xl">
+            <h3 className="font-display text-lg font-semibold text-[var(--color-ink)] md:text-xl">
               {project.name}
             </h3>
             <p className="mt-1 text-xs text-[var(--color-muted)]">{project.location}</p>

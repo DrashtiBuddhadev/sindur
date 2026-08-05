@@ -37,10 +37,10 @@ export function ProjectCarousel({ images, name }: { images: string[]; name: stri
       <div className="mx-auto max-w-6xl">
         <Reveal className="mb-10 flex items-end justify-between gap-6">
           <div>
-            <p className="mb-3 text-xs uppercase tracking-[0.2em] text-[var(--color-primary)]">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.1em] text-[var(--color-primary)]">
               Gallery
             </p>
-            <h2 className="font-display text-3xl leading-tight text-[var(--color-ink)] md:text-4xl">
+            <h2 className="font-display text-3xl font-semibold leading-tight text-[var(--color-ink)] md:text-4xl">
               Inside {name}.
             </h2>
           </div>

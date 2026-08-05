@@ -4,7 +4,8 @@ import { Hero } from "@/components/home/hero";
 import { StatsStrip } from "@/components/home/stats-strip";
 import { WhoWeAre } from "@/components/home/who-we-are";
 import { WhatWeDo } from "@/components/home/what-we-do";
-import { LatestLaunch } from "@/components/home/latest-launch";
+import { Faq } from "@/components/home/faq";
+import { TimelessCta } from "@/components/home/timeless-cta";
 
 export default function Home() {
   return (
@@ -15,7 +16,8 @@ export default function Home() {
         <StatsStrip />
         <WhoWeAre />
         <WhatWeDo />
-        <LatestLaunch />
+        <Faq />
+        <TimelessCta />
       </main>
       <Footer />
     </>

@@ -45,10 +45,10 @@ export function Navbar() {
   }, []);
 
   const chrome = scrolled
-    ? "liquid-glass-light text-[var(--color-ink)]"
-    : "liquid-glass text-white";
+    ? "liquid-glass-light text-[var(--color-ink)] shadow-sm"
+    : "text-[var(--color-ink)]";
 
-  const linkHover = scrolled ? "hover:text-[var(--color-primary)]" : "hover:text-gray-300";
+  const linkHover = "hover:text-[var(--color-primary)]";
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
@@ -61,7 +61,7 @@ export function Navbar() {
           aria-label="Sindur Group home"
         >
           <Image
-            src={scrolled ? "/sindur_logo.png" : "/images/sindur-logo-1.png"}
+            src="/sindur_logo.png"
             alt="Sindur Group"
             width={3789}
             height={1580}
@@ -101,19 +101,13 @@ export function Navbar() {
             </button>
 
             {projectsOpen && (
-              <div
-                className={`absolute left-1/2 top-full mt-3 w-56 -translate-x-1/2 p-2 shadow-lg transition-colors ${
-                  scrolled ? "liquid-glass-light" : "liquid-glass"
-                }`}
-              >
+              <div className="liquid-glass-light absolute left-1/2 top-full mt-3 w-56 -translate-x-1/2 p-2 shadow-lg">
                 {PROJECT_CATEGORIES.map((cat) => (
                   <Link
                     key={cat.href}
                     href={cat.href}
                     onClick={() => setProjectsOpen(false)}
-                    className={`block rounded-lg px-3 py-2 text-sm transition-colors ${
-                      scrolled ? "hover:bg-black/5" : "hover:bg-white/10"
-                    }`}
+                    className="block rounded-lg px-3 py-2 text-sm text-[var(--color-ink)] transition-colors hover:bg-black/5"
                   >
                     {cat.label}
                   </Link>
@@ -132,7 +126,7 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <Link
             href="/contact"
-            className="hidden rounded-full bg-white px-6 py-2 text-sm font-medium text-black transition-colors hover:bg-gray-100 sm:inline-block"
+            className="hidden rounded-full bg-[var(--color-ink)] px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-[var(--color-primary)] sm:inline-block"
           >
             Enquire Now
           </Link>
@@ -156,11 +150,7 @@ export function Navbar() {
       </div>
 
       {mobileOpen && (
-        <div
-          className={`relative px-6 pb-4 text-sm transition-colors md:hidden ${
-            scrolled ? "liquid-glass-light text-[var(--color-ink)]" : "liquid-glass text-white"
-          }`}
-        >
+        <div className="liquid-glass-light relative px-6 pb-4 text-sm text-[var(--color-ink)] md:hidden">
           <div className="flex flex-col gap-1">
             {NAV_LINKS.map((link) => (
               <Link
@@ -175,7 +165,7 @@ export function Navbar() {
             <Link
               href="/projects"
               onClick={() => setMobileOpen(false)}
-              className="px-3 pt-2 pb-1 text-xs uppercase tracking-widest opacity-60"
+              className="px-3 pt-2 pb-1 text-xs font-medium uppercase tracking-[0.08em] text-[var(--color-muted)]"
             >
               Projects
             </Link>
@@ -202,7 +192,7 @@ export function Navbar() {
             <Link
               href="/contact"
               onClick={() => setMobileOpen(false)}
-              className="mt-2 rounded-full bg-white px-4 py-2.5 text-center font-medium text-black"
+              className="mt-2 rounded-full bg-[var(--color-ink)] px-4 py-2.5 text-center font-medium text-white transition-colors hover:bg-[var(--color-primary)]"
             >
               Enquire Now
             </Link>

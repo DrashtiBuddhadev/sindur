@@ -1,144 +1,83 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/motion/reveal";
+import { ArrowIcon } from "@/components/ui/arrow-icon";
 
-const CARD_BG = "bg-[#f7f4ee]";
-const GRID_LINE = "border-white/35";
-
-function ExpertiseCard({
-  number,
-  image,
-  imageAlt,
-  caption,
-  description,
-}: {
-  number: string;
-  image: string;
-  imageAlt: string;
-  caption: string;
-  description: string;
-}) {
-  return (
-    <div
-      className={`group relative flex flex-col overflow-hidden border p-3 transition-colors duration-300 hover:border-[#175892] md:p-4 ${CARD_BG} ${GRID_LINE}`}
-    >
-      <span className="mb-2 block text-xs tracking-[0.1em] text-neutral-400">{number}</span>
-      <div className="relative aspect-[4/3] w-full overflow-hidden">
-        <Image
-          src={image}
-          alt={imageAlt}
-          fill
-          sizes="(min-width: 768px) 25vw, 100vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-      </div>
-      <p className="mt-3 text-xs font-medium uppercase tracking-[0.15em] text-neutral-700 transition-colors duration-300 group-hover:text-[#175892]">
-        {caption}
-      </p>
-
-      <div className="pointer-events-none absolute inset-0 flex flex-col justify-center bg-[#175892]/0 p-6 opacity-0 transition-all duration-300 md:p-8 group-hover:bg-[#175892]/92 group-hover:opacity-100">
-        <span className="mb-2 translate-y-2 text-[10px] tracking-[0.1em] text-white/60 transition-transform duration-300 group-hover:translate-y-0">
-          {number}
-        </span>
-        <h3 className="translate-y-2 font-display text-base text-white transition-transform duration-300 group-hover:translate-y-0 md:text-lg">
-          {caption}
-        </h3>
-        <p className="mt-3 translate-y-2 text-xs leading-relaxed text-white/75 transition-transform duration-300 group-hover:translate-y-0">
-          {description}
-        </p>
-      </div>
-    </div>
-  );
-}
+const UNFOLD_TRANSITION = { duration: 0.9, ease: [0.65, 0, 0.35, 1] as const };
 
 export function WhoWeAre() {
   return (
-    <section className="relative w-full overflow-hidden">
-      <div className="absolute inset-0">
-        <Image
-          src="/images/Modern Desert Home.png"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover"
-        />
-      </div>
-      <div className="absolute inset-0 bg-black/60" />
+    <section className="bg-white px-6 pt-16 pb-10 md:px-12 md:pt-20 md:pb-14 lg:px-16">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-[32%_1fr] md:gap-12 lg:gap-16">
+        <Reveal className="flex flex-col">
+          <h2 className="font-display text-2xl font-semibold leading-tight tracking-wide md:text-3xl">
+            <span className="text-[var(--color-ink)]">We Don&apos;t Just Develop Spaces.</span>{" "}
+            <span className="text-neutral-300">We Shape Possibilities.</span>
+          </h2>
 
-      <div className="relative z-10 flex flex-col gap-2 p-3 md:gap-3 md:p-4">
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-4 md:gap-4">
-          <Reveal
-            className={`flex flex-col justify-center gap-3 border p-6 md:col-span-2 md:p-8 ${GRID_LINE}`}
+          <motion.div
+            initial={{ clipPath: "inset(0 100% 0 0)" }}
+            whileInView={{ clipPath: "inset(0 0% 0 0)" }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={UNFOLD_TRANSITION}
+            className="relative mt-10 aspect-[3/4] w-full max-w-xs overflow-hidden md:mt-auto md:max-w-none"
           >
-            <p className="text-xs uppercase tracking-[0.2em] text-white/60">Who We Are</p>
-            <h2 className="font-display text-2xl leading-tight text-white md:text-3xl lg:text-4xl">
-              A Name Naranpura
-              <br />
-              <em className="text-white/75 not-italic">Trusts.</em>
-            </h2>
-            <p className="max-w-md text-sm leading-[1.7] text-white/70">
-              Sindur Group is one of the most trusted real estate developers in Naranpura and its
-              surrounding neighbourhoods — building urban convenience and green living into every
-              project since 2014.
+            <Image
+              src="/images/SAAMARTHYA HD IMAGES/nightview.jpg"
+              alt="Inside a Sindur Group residence"
+              fill
+              sizes="(min-width: 768px) 30vw, 80vw"
+              className="object-cover"
+            />
+          </motion.div>
+        </Reveal>
+
+        <div className="flex flex-col gap-6">
+          <Reveal>
+            <h3 className="font-display text-3xl font-semibold text-[var(--color-ink)] md:text-4xl">
+              About Us
+            </h3>
+          </Reveal>
+
+          <motion.div
+            initial={{ clipPath: "inset(0 0 0 100%)" }}
+            whileInView={{ clipPath: "inset(0 0 0 0%)" }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={UNFOLD_TRANSITION}
+            className="relative aspect-[16/10] w-full overflow-hidden"
+          >
+            <Image
+              src="/images/SPECTRUM HD IMAGES/view_01.jpg"
+              alt="Aerial view of a Sindur Group residential project"
+              fill
+              sizes="(min-width: 768px) 60vw, 90vw"
+              className="object-cover"
+            />
+          </motion.div>
+
+          <Reveal delay={0.15} className="flex flex-col items-start gap-6">
+            <p className="max-w-2xl text-base leading-[1.75] md:text-lg">
+              <span className="font-semibold text-[var(--color-ink)]">
+                Every landmark begins with a clear vision—an understanding of the location, the
+                people and the future it will serve.
+              </span>{" "}
+              <span className="text-[var(--color-muted)]">
+                With a commitment to thoughtful planning, enduring quality and responsible
+                development, we create spaces that elevate everyday living, empower businesses
+                and add lasting value to Ahmedabad&apos;s evolving landscape.
+              </span>
             </p>
+
             <Link
               href="/about"
-              className="inline-flex w-fit items-center gap-3 border-b border-white/30 pb-1 text-sm font-medium text-white transition-colors hover:border-white"
+              className="group inline-flex items-center gap-3 rounded-full bg-[var(--color-ink)] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-[var(--color-primary)]"
             >
-              Read Our Story <span>→</span>
+              Read Our Story
+              <ArrowIcon className="-mb-px transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
-          </Reveal>
-
-          <Reveal delay={0.1} className="self-start">
-            <ExpertiseCard
-              number="01"
-              image="/images/Serene Mid-Century Modern Interior.png"
-              imageAlt="Calm, considered interiors reflecting Sindur's design philosophy"
-              caption="Our Philosophy"
-              description="Urban comfort and green living aren't a trade-off. They're a design brief."
-            />
-          </Reveal>
-
-          <Reveal delay={0.15} className="self-start">
-            <ExpertiseCard
-              number="02"
-              image="/images/Modern Cantilevered House.png"
-              imageAlt="Modern living spaces by Sindur Group"
-              caption="Modern Living"
-              description="Thoughtfully planned homes built for comfort, light, and everyday ease."
-            />
-          </Reveal>
-        </div>
-
-        <div
-          className={`grid grid-cols-1 gap-3 border-t md:grid-cols-[35%_1fr_1fr_1fr] md:gap-4 ${GRID_LINE}`}
-        >
-          <div className={`hidden border md:block ${GRID_LINE}`} />
-
-          <Reveal delay={0.1} className="self-start">
-            <ExpertiseCard
-              number="03"
-              image="/images/Modern Luxury House at Dusk.png"
-              imageAlt="Sindur Group's promise of trust, reflected in every home"
-              caption="Our Promise"
-              description="95% of our customers would recommend us — one project at a time."
-            />
-          </Reveal>
-
-          <Reveal delay={0.15} className="self-start">
-            <ExpertiseCard
-              number="04"
-              image="/images/Modern House at Twilight.png"
-              imageAlt="Timeless residential spaces by Sindur Group"
-              caption="Timeless Spaces"
-              description="Designed to hold their value and their character for generations."
-            />
-          </Reveal>
-
-          <Reveal delay={0.2} className={`flex items-end justify-end border p-1.5 md:p-2 ${GRID_LINE}`}>
-            <p className="text-right text-xs uppercase tracking-[0.2em] text-white/70">
-              Build for Future.
-            </p>
           </Reveal>
         </div>
       </div>
