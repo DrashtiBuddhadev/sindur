@@ -48,7 +48,7 @@ export function HistoryTimeline() {
               A Name Ahmedabad Trusts
             </h3>
             <p className="mt-3 text-sm leading-[1.75] text-neutral-500 md:text-base">
-              2M+ sq.ft. developed, 20+ projects completed, and ongoing developments across
+              2M+ sq.ft. developed, 20+ projects, and ongoing developments across
               Naranpura, Ognaj, and Ambawadi — with 95% of our customers recommending us to the
               next.
             </p>

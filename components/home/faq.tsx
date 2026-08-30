@@ -13,28 +13,28 @@ interface FaqItem {
 const FAQ_ITEMS: FaqItem[] = [
   {
     id: "01",
-    question: "Where are Sindur Group's projects located?",
-    answer: "Our developments are strategically situated in premium and growing micro-markets across Ahmedabad, including Akhbar Nagar, Naranpura, Shilaj, S.P. Ring Road, and Ambawadi.",
+    question: "What guides SINDUR CN GROUP's developments?",
+    answer: "Every project is shaped around thoughtful planning, dependable quality, modern design, responsible development and long-term value.",
   },
   {
     id: "02",
     question: "What types of properties do you offer?",
-    answer: "We design and develop thoughtfully planned residential apartments, premium commercial spaces, modern PG/studio accommodations, and premium residential land plotting projects.",
+    answer: "We create residential developments, commercial developments, plotted spaces and managed living environments, each planned around functionality and everyday use.",
   },
   {
     id: "03",
-    question: "Are all Sindur Group projects RERA approved?",
-    answer: "Yes, compliance is a core pillar of our philosophy. All our active and completed developments are fully registered under Gujarat RERA (GUJRERA) and adhere strictly to all regulatory guidelines.",
+    question: "Why do families choose SINDUR CN?",
+    answer: "Families choose us for thoughtfully planned homes, dependable quality, modern design, transparency and the confidence that comes from clear commitments.",
   },
   {
     id: "04",
-    question: "How can I schedule a site visit?",
-    answer: "You can easily arrange a visit by visiting our Contact page and filling out the form, or by calling our sales helpline directly. A relationship manager will coordinate a tour at your convenience.",
+    question: "How do you approach location selection?",
+    answer: "We consider the project, its surroundings, convenience, connectivity and long-term potential so each location can support modern living and working requirements.",
   },
   {
     id: "05",
-    question: "What is the core philosophy behind your construction?",
-    answer: "We prioritize functional design, structural integrity, and eco-friendly practices. Each project is planned to maximize natural ventilation, day-lighting, and green areas while offering premium amenities.",
+    question: "How can I learn more about a project?",
+    answer: "Explore the Projects page or get in touch with the team to discuss the development, location and space that best fits your next chapter.",
   },
 ];
 

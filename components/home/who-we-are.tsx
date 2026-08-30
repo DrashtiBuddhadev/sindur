@@ -14,13 +14,13 @@ export function WhoWeAre() {
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-[32%_1fr] md:gap-12 lg:gap-16">
         <Reveal className="flex flex-col">
           <h2 className="font-display text-2xl font-semibold leading-tight tracking-wide md:text-3xl">
-            <span className="text-[var(--color-ink)]">We Don&apos;t Just Develop Spaces.</span>{" "}
-            <span className="text-neutral-300">We Shape Possibilities.</span>
+            <span className="text-[var(--color-ink)]">Building Spaces.</span>{" "}
+            <span className="text-neutral-300">Creating Trust. Shaping Better Lifestyles.</span>
           </h2>
 
           <motion.div
-            initial={{ clipPath: "inset(0 100% 0 0)" }}
-            whileInView={{ clipPath: "inset(0 0% 0 0)" }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={UNFOLD_TRANSITION}
             className="relative mt-10 aspect-[3/4] w-full max-w-xs overflow-hidden md:mt-auto md:max-w-none"
@@ -43,8 +43,8 @@ export function WhoWeAre() {
           </Reveal>
 
           <motion.div
-            initial={{ clipPath: "inset(0 0 0 100%)" }}
-            whileInView={{ clipPath: "inset(0 0 0 0%)" }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={UNFOLD_TRANSITION}
             className="relative aspect-[16/10] w-full overflow-hidden"
@@ -61,13 +61,13 @@ export function WhoWeAre() {
           <Reveal delay={0.15} className="flex flex-col items-start gap-6">
             <p className="max-w-2xl text-base leading-[1.75] md:text-lg">
               <span className="font-semibold text-[var(--color-ink)]">
-                Every landmark begins with a clear vision—an understanding of the location, the
-                people and the future it will serve.
+                Thoughtfully designed residential and commercial developments created around
+                quality, comfort, functionality and lasting value.
               </span>{" "}
               <span className="text-[var(--color-muted)]">
-                With a commitment to thoughtful planning, enduring quality and responsible
-                development, we create spaces that elevate everyday living, empower businesses
-                and add lasting value to Ahmedabad&apos;s evolving landscape.
+                Since 2014, SINDUR CN GROUP has been building more than properties. We create
+                spaces where families grow, businesses progress and relationships are built for
+                generations.
               </span>
             </p>
 

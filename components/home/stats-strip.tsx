@@ -3,9 +3,9 @@ import { CountUp } from "@/components/home/count-up";
 
 const STATS = [
   { value: 2, suffix: "M+", label: "Sq.Ft. Developed" },
-  { value: 20, suffix: "+", label: "Projects Completed" },
+  { value: 20, suffix: "+", label: "Projects" },
   { value: 1000, suffix: "+", label: "Homes Delivered" },
-  { value: 95, suffix: "%", label: "Customer Satisfaction" },
+  { value: 2014, suffix: "", label: "Building Since" },
 ];
 
 export function StatsStrip() {

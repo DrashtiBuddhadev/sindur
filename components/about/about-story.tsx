@@ -51,7 +51,7 @@ export function AboutStory() {
             <p className="text-justify text-sm leading-[1.8] text-[var(--color-muted)] md:text-base">
               Sindur Group was established in 2014 with a simple conviction: a home should offer
               the comfort of the city without giving up the calm of green living. That conviction
-              has since shaped 20+ completed projects and over 2 million square feet of
+              has since shaped 20+ projects and over 2 million square feet of
               development across Ahmedabad.
             </p>
             <p className="mt-4 text-justify text-sm leading-[1.8] text-[var(--color-muted)] md:text-base">

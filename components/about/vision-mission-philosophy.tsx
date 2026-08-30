@@ -1,133 +1,79 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Reveal } from "@/components/motion/reveal";
 
 const PILLARS = [
   {
     label: "Vision",
-    copy: "To create landmark residential and commercial projects that define Ahmedabad's skyline — and its standard of living.",
-    image: "/images/Modern Desert Home.png",
+    title: "Creating better spaces for better living.",
+    copy: "To build trust through modern, thoughtfully planned and environmentally responsible spaces that respond to evolving lifestyles.",
+    image: "/images/ANALA FINAL VIEW 18.07.2025/12_ALIGN_SINDUR ANALA.jpg",
   },
   {
     label: "Mission",
-    copy: "To deliver unique, modern, eco-friendly spaces that earn customer trust project after project.",
-    image: "/images/Modern House at Twilight.png",
+    title: "Thoughtful planning. Reliable execution.",
+    copy: "To consistently create residential and commercial developments that combine contemporary design, quality construction, customer-focused thinking and long-term value.",
+    image: "/images/ANALA FINAL VIEW 18.07.2025/13_ALIGN_SINDUR ANALA.jpg",
   },
   {
     label: "Philosophy",
-    copy: "Urban comfort and green living aren't a trade-off. They're a design brief.",
-    image: "/images/Serene Mid-Century Modern Interior.png",
+    title: "Different by design. Consistent in quality.",
+    copy: "Each location has its own context and every family has different expectations. We give every development its own identity while holding the same standards across planning, design and delivery.",
+    image: "/images/ANALA FINAL VIEW 18.07.2025/11_ALIGN_SINDUR ANALA.jpg",
   },
-];
+] as const;
 
-const AUTO_ADVANCE_MS = 5000;
+type Pillar = (typeof PILLARS)[number];
 
-function ArrowButton({
-  direction,
-  onClick,
-}: {
-  direction: "left" | "right";
-  onClick: () => void;
-}) {
+function PillarPanel({ pillar, index }: { pillar: Pillar; index: number }) {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: wrapperRef,
+    offset: ["start start", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["16%", "-16%"]);
+
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-label={direction === "left" ? "Previous" : "Next"}
-      className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 text-white transition-colors hover:border-white hover:bg-white/10"
-    >
-      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
-        <path
-          d={direction === "left" ? "M6 1 1 5l5 4M1 5h12" : "M8 1l5 4-5 4M13 5H1"}
-          stroke="currentColor"
-          strokeWidth="1.3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </button>
+    <div ref={wrapperRef} className="relative h-[170vh]">
+      <section className="sticky top-0 flex h-screen items-end overflow-hidden bg-black">
+        <motion.div style={{ y }} className="absolute inset-x-0 -top-[25%] h-[150%]">
+          <Image
+            src={pillar.image}
+            alt=""
+            fill
+            priority={index === 0}
+            sizes="100vw"
+            className="object-cover"
+          />
+        </motion.div>
+        <div className="absolute inset-0 bg-black/55" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+
+        <div className="relative z-10 w-full px-6 pb-16 md:px-12 md:pb-20 lg:px-16">
+          <Reveal className="max-w-2xl">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-primary)]">
+              {String(index + 1).padStart(2, "0")} — {pillar.label}
+            </p>
+            <h2 className="font-display text-3xl font-semibold leading-[1.15] text-white md:text-4xl lg:text-5xl">
+              {pillar.title}
+            </h2>
+            <p className="mt-4 max-w-md text-sm leading-[1.75] text-white/70 md:text-base">{pillar.copy}</p>
+          </Reveal>
+        </div>
+      </section>
+    </div>
   );
 }
 
 export function VisionMissionPhilosophy() {
-  const [active, setActive] = useState(0);
-  const current = PILLARS[active];
-
-  const next = () => setActive((i) => (i + 1) % PILLARS.length);
-  const prev = () => setActive((i) => (i - 1 + PILLARS.length) % PILLARS.length);
-
-  useEffect(() => {
-    const id = setTimeout(next, AUTO_ADVANCE_MS);
-    return () => clearTimeout(id);
-  }, [active]);
-
   return (
-    <section className="bg-[#12100d] px-6 py-20 md:px-12 md:py-28 lg:px-16">
-      <div className="mx-auto max-w-6xl">
-        <Reveal className="flex flex-col gap-6 md:flex-row md:items-stretch">
-          <div className="flex flex-col justify-between gap-10 md:w-[38%]">
-            <div>
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.1em] text-white/50">
-                What Drives Us
-              </p>
-              <h2 className="font-display text-3xl font-semibold leading-tight text-white md:text-4xl lg:text-5xl">
-                Vision, Mission &amp; Philosophy.
-              </h2>
-            </div>
-
-            <div>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={current.label}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.35, ease: "easeOut" }}
-                >
-                  <span className="font-display text-xs font-medium text-white/40">
-                    {String(active + 1).padStart(2, "0")} / {String(PILLARS.length).padStart(2, "0")}
-                  </span>
-                  <h3 className="mt-2 font-display text-xl font-semibold text-white md:text-2xl">
-                    {current.label}
-                  </h3>
-                  <p className="mt-4 max-w-sm text-sm leading-[1.75] text-white/60 md:text-base">
-                    {current.copy}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
-
-              <div className="mt-8 flex items-center gap-3">
-                <ArrowButton direction="left" onClick={prev} />
-                <ArrowButton direction="right" onClick={next} />
-              </div>
-            </div>
-          </div>
-
-          <div className="relative min-h-[360px] w-full overflow-hidden border border-white/10 md:w-[62%]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current.image}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-                className="absolute inset-0"
-              >
-                <Image
-                  src={current.image}
-                  alt={`${current.label} — Sindur Group`}
-                  fill
-                  sizes="(min-width: 768px) 50vw, 90vw"
-                  className="object-cover"
-                />
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </Reveal>
-      </div>
-    </section>
+    <>
+      {PILLARS.map((pillar, index) => (
+        <PillarPanel key={pillar.label} pillar={pillar} index={index} />
+      ))}
+    </>
   );
 }
