@@ -96,12 +96,20 @@ function AboutHero() {
     <section ref={sectionRef} className="relative h-svh min-h-[560px] w-full overflow-hidden bg-white">
       <motion.div style={{ y }} className="absolute inset-0 h-[112%] w-full">
         <Image
+          src="/images/real/aboutus_mobile.jpeg"
+          alt="Unlocking value with a classic key - SINDUR CN GROUP"
+          fill
+          priority
+          sizes="100vw"
+          className="object-contain md:hidden"
+        />
+        <Image
           src="/images/real/about us.jpeg"
           alt="Unlocking value with a classic key - SINDUR CN GROUP"
           fill
           priority
           sizes="100vw"
-          className="object-contain"
+          className="hidden object-contain md:block"
         />
       </motion.div>
     </section>
