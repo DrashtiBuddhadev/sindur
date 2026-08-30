@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/footer";
 import { ProjectsHero } from "@/components/projects/projects-hero";
 import { ScrollTrack } from "@/components/projects/scroll-track";
 import { ProjectsGrid } from "@/components/projects/projects-grid";
-import { AboutCta } from "@/components/about/about-cta";
+import { ProjectsCta } from "@/components/projects/projects-cta";
 import { CATEGORIES, type ProjectCategory } from "@/lib/projects";
 
 export const metadata: Metadata = {
@@ -32,7 +32,7 @@ export default async function ProjectsPage({
       <main>
         <ProjectsHero />
         <ProjectsGrid key={initialCategory ?? "all"} initialCategory={initialCategory} />
-        <AboutCta />
+        <ProjectsCta />
       </main>
       <Footer />
     </>

@@ -42,6 +42,7 @@ export const PROJECTS: Project[] = [
       "Jain Derasar & Haveli within walking distance",
     ],
     images: [
+      "/images/real/projects/anala.jpeg",
       `${ANALA_DIR}/01_01_ALIGN_SINDUR ANALA.jpg`,
       `${ANALA_DIR}/02_01_ALIGN_SINDUR ANALA.jpg`,
       `${ANALA_DIR}/03_01_ALIGN_SINDUR ANALA.jpg`,
@@ -104,6 +105,7 @@ export const PROJECTS: Project[] = [
       "Landscaped garden, gazebo & multipurpose court",
     ],
     images: [
+      "/images/real/projects/sparsh.jpeg",
       `${SPARSH_DIR}/Frontview.jpg`,
       `${SPARSH_DIR}/Nightview.jpg`,
       `${SPARSH_DIR}/Gardenview.jpg`,
@@ -128,6 +130,7 @@ export const PROJECTS: Project[] = [
       "Extra terrace space at 2nd, 4th & 6th floors",
     ],
     images: [
+      "/images/real/projects/spectrum.jpeg",
       `${SPECTRUM_DIR}/view_01.jpg`,
       `${SPECTRUM_DIR}/view_02.jpg`,
       `${SPECTRUM_DIR}/view_03.jpg`,
@@ -153,6 +156,7 @@ export const PROJECTS: Project[] = [
       "Assured rental income from month one",
     ],
     images: [
+      "/images/real/projects/vienna.jpeg",
       `${VIENNA_DIR}/PG Frontview.jpg`,
       `${VIENNA_DIR}/PG Arcview.jpg`,
       `${VIENNA_DIR}/PG Cornerview01-3.jpg`,

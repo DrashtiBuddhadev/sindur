@@ -2,22 +2,24 @@ import Image from "next/image";
 
 export function ContactHero() {
   return (
-    <section className="relative h-svh min-h-[560px] w-full overflow-hidden bg-white">
+    <section className="relative w-full overflow-hidden bg-white">
       <Image
         src="/images/real/contact_mobile.jpeg"
         alt="Let's talk - SINDUR CN GROUP"
-        fill
+        width={1080}
+        height={1920}
         priority
         sizes="100vw"
-        className="object-contain md:hidden"
+        className="block h-auto w-full md:hidden"
       />
       <Image
         src="/images/real/contact us.jpeg"
         alt="Let's talk - SINDUR CN GROUP"
-        fill
+        width={1920}
+        height={1080}
         priority
         sizes="100vw"
-        className="hidden object-contain md:block"
+        className="hidden h-auto w-full md:block"
       />
     </section>
   );

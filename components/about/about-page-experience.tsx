@@ -90,26 +90,28 @@ function AboutHero() {
     target: sectionRef,
     offset: ["start start", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "6%"]);
 
   return (
-    <section ref={sectionRef} className="relative h-svh min-h-[560px] w-full overflow-hidden bg-white">
-      <motion.div style={{ y }} className="absolute inset-0 h-[112%] w-full">
+    <section ref={sectionRef} className="relative w-full overflow-hidden bg-white">
+      <motion.div style={{ y }}>
         <Image
           src="/images/real/aboutus_mobile.jpeg"
           alt="Unlocking value with a classic key - SINDUR CN GROUP"
-          fill
+          width={1080}
+          height={1920}
           priority
           sizes="100vw"
-          className="object-contain md:hidden"
+          className="block h-auto w-full md:hidden"
         />
         <Image
           src="/images/real/about us.jpeg"
           alt="Unlocking value with a classic key - SINDUR CN GROUP"
-          fill
+          width={1920}
+          height={1080}
           priority
           sizes="100vw"
-          className="hidden object-contain md:block"
+          className="hidden h-auto w-full md:block"
         />
       </motion.div>
     </section>
