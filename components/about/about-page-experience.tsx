@@ -333,7 +333,7 @@ export function AboutPageExperience() {
 
       <section className="bg-white px-3 py-12 md:px-6 md:py-18 lg:px-8">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-3 md:grid-cols-[1.12fr_0.88fr]">
-          <Reveal className="grid grid-cols-1 gap-3 sm:min-h-[520px] sm:grid-cols-[0.68fr_0.32fr]">
+          <Reveal className="grid grid-cols-1 gap-3 sm:min-h-[520px]">
             <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100 sm:aspect-auto sm:h-full">
               <Image
                 src="/images/ANALA FINAL VIEW 18.07.2025/17_01_ALIGN_SINDUR ANALA.jpg"
@@ -343,12 +343,12 @@ export function AboutPageExperience() {
                 className="object-cover object-center"
               />
             </div>
-            <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100 sm:aspect-auto sm:h-full">
+            <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100 sm:hidden">
               <Image
                 src="/images/real/pg.jpeg"
                 alt="Managed living by SINDUR CN GROUP"
                 fill
-                sizes="(min-width: 768px) 18vw, 100vw"
+                sizes="100vw"
                 className="object-cover object-[center_72%]"
               />
             </div>
