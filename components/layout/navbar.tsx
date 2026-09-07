@@ -21,7 +21,7 @@ const TRAILING_LINKS = [
   { label: "Careers", href: "/careers" },
 ];
 
-export function Navbar() {
+export function Navbar({ overDarkHero = false }: { overDarkHero?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [projectsOpen, setProjectsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -46,9 +46,12 @@ export function Navbar() {
 
   const chrome = scrolled
     ? "liquid-glass-light text-[var(--color-ink)] shadow-sm"
-    : "text-[var(--color-ink)]";
+    : overDarkHero
+      ? "text-white"
+      : "text-[var(--color-ink)]";
 
-  const linkHover = "hover:text-[var(--color-primary)]";
+  const logoInverted = !scrolled && overDarkHero;
+  const linkHover = overDarkHero && !scrolled ? "hover:text-white/70" : "hover:text-[var(--color-primary)]";
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
@@ -65,7 +68,9 @@ export function Navbar() {
             alt="Sindur Group"
             width={3789}
             height={1580}
-            className="absolute left-0 top-0 h-[148%] w-auto max-w-none object-contain"
+            className={`absolute left-0 top-0 h-[148%] w-auto max-w-none object-contain transition-[filter] duration-300 ${
+              logoInverted ? "brightness-0 invert" : ""
+            }`}
             priority
           />
         </Link>

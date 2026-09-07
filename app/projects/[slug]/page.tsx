@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { ProjectHero } from "@/components/projects/project-hero";
+import { ProjectInfoCard } from "@/components/projects/project-info-card";
 import { ProjectOverview } from "@/components/projects/project-overview";
 import { ProjectCarousel } from "@/components/projects/project-carousel";
 import { ProjectsCta } from "@/components/projects/projects-cta";
@@ -37,9 +38,10 @@ export default async function ProjectDetailPage({
 
   return (
     <>
-      <Navbar />
+      <Navbar overDarkHero />
       <main>
         <ProjectHero project={project} />
+        <ProjectInfoCard project={project} />
         <ProjectOverview project={project} />
         <ProjectCarousel images={project.images} name={project.name} />
         <ProjectsCta />

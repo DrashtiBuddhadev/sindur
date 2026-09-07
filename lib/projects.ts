@@ -9,6 +9,8 @@ export interface Project {
   description: string;
   highlights: string[];
   images: string[];
+  /** Small thumbnail used on the projects grid card. Falls back to images[0] if omitted. */
+  cover?: string;
   mapUrl?: string;
 }
 
@@ -41,8 +43,8 @@ export const PROJECTS: Project[] = [
       "2 allotted individual car parkings",
       "Jain Derasar & Haveli within walking distance",
     ],
+    cover: "/images/real/projects/anala.jpeg",
     images: [
-      "/images/real/projects/anala.jpeg",
       `${ANALA_DIR}/01_01_ALIGN_SINDUR ANALA.jpg`,
       `${ANALA_DIR}/02_01_ALIGN_SINDUR ANALA.jpg`,
       `${ANALA_DIR}/03_01_ALIGN_SINDUR ANALA.jpg`,
@@ -104,8 +106,8 @@ export const PROJECTS: Project[] = [
       "Dedicated EV charging for every home",
       "Landscaped garden, gazebo & multipurpose court",
     ],
+    cover: "/images/real/projects/sparsh.jpeg",
     images: [
-      "/images/real/projects/sparsh.jpeg",
       `${SPARSH_DIR}/Frontview.jpg`,
       `${SPARSH_DIR}/Nightview.jpg`,
       `${SPARSH_DIR}/Gardenview.jpg`,
@@ -129,8 +131,8 @@ export const PROJECTS: Project[] = [
       "One allotted parking per unit",
       "Extra terrace space at 2nd, 4th & 6th floors",
     ],
+    cover: "/images/real/projects/spectrum.jpeg",
     images: [
-      "/images/real/projects/spectrum.jpeg",
       `${SPECTRUM_DIR}/view_01.jpg`,
       `${SPECTRUM_DIR}/view_02.jpg`,
       `${SPECTRUM_DIR}/view_03.jpg`,
@@ -155,8 +157,8 @@ export const PROJECTS: Project[] = [
       "Indoor games, library & large-scale gym",
       "Assured rental income from month one",
     ],
+    cover: "/images/real/projects/vienna.jpeg",
     images: [
-      "/images/real/projects/vienna.jpeg",
       `${VIENNA_DIR}/PG Frontview.jpg`,
       `${VIENNA_DIR}/PG Arcview.jpg`,
       `${VIENNA_DIR}/PG Cornerview01-3.jpg`,

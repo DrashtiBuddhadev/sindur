@@ -32,7 +32,7 @@ export function ProjectCard({
       >
         <div className={`relative overflow-hidden bg-[#eef5fc] ${sizeClassName}`}>
           <Image
-            src={project.images[0]}
+            src={project.cover ?? project.images[0]}
             alt={project.name}
             fill
             sizes="(min-width: 1280px) 28vw, (min-width: 768px) 33vw, 100vw"
