@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/footer";
 import { ProjectHero } from "@/components/projects/project-hero";
 import { ProjectOverview } from "@/components/projects/project-overview";
 import { ProjectCarousel } from "@/components/projects/project-carousel";
-import { AboutCta } from "@/components/about/about-cta";
+import { ProjectsCta } from "@/components/projects/projects-cta";
 import { PROJECTS, getProjectBySlug } from "@/lib/projects";
 
 export function generateStaticParams() {
@@ -42,7 +42,7 @@ export default async function ProjectDetailPage({
         <ProjectHero project={project} />
         <ProjectOverview project={project} />
         <ProjectCarousel images={project.images} name={project.name} />
-        <AboutCta />
+        <ProjectsCta />
       </main>
       <Footer />
     </>
