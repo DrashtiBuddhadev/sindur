@@ -18,21 +18,41 @@ export function WhoWeAre() {
             <span className="text-neutral-300">Creating Trust. Shaping Better Lifestyles.</span>
           </h2>
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={UNFOLD_TRANSITION}
-            className="relative mt-10 aspect-[3/4] w-full max-w-xs overflow-hidden md:mt-auto md:max-w-none"
-          >
-            <Image
-              src="https://res.cloudinary.com/djpswxx2l/image/upload/w_1200,q_auto,f_auto/v1784461257/Nightview_ycklsf.jpg"
-              alt="Inside a Sindur Group residence"
-              fill
-              sizes="(min-width: 768px) 30vw, 80vw"
-              className="object-cover"
-            />
-          </motion.div>
+          <div className="relative mt-10 aspect-[3/4] w-full max-w-xs overflow-hidden md:mt-auto md:max-w-none">
+            {/* Mobile: plain fade - the clip-path unfold below was leaving images invisible on mobile browsers. */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={UNFOLD_TRANSITION}
+              className="absolute inset-0 md:hidden"
+            >
+              <Image
+                src="https://res.cloudinary.com/djpswxx2l/image/upload/w_1200,q_auto,f_auto/v1784461257/Nightview_ycklsf.jpg"
+                alt="Inside a Sindur Group residence"
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </motion.div>
+
+            {/* Desktop: the original unfold reveal. */}
+            <motion.div
+              initial={{ clipPath: "inset(0 100% 0 0)" }}
+              whileInView={{ clipPath: "inset(0 0% 0 0)" }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={UNFOLD_TRANSITION}
+              className="absolute inset-0 hidden md:block"
+            >
+              <Image
+                src="https://res.cloudinary.com/djpswxx2l/image/upload/w_1200,q_auto,f_auto/v1784461257/Nightview_ycklsf.jpg"
+                alt="Inside a Sindur Group residence"
+                fill
+                sizes="30vw"
+                className="object-cover"
+              />
+            </motion.div>
+          </div>
         </Reveal>
 
         <div className="flex flex-col gap-6">
@@ -42,21 +62,41 @@ export function WhoWeAre() {
             </h3>
           </Reveal>
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={UNFOLD_TRANSITION}
-            className="relative aspect-[16/10] w-full overflow-hidden"
-          >
-            <Image
-              src="https://res.cloudinary.com/djpswxx2l/image/upload/w_1600,q_auto,f_auto/v1784463696/view_01_ghg8pq.jpg"
-              alt="Aerial view of a Sindur Group residential project"
-              fill
-              sizes="(min-width: 768px) 60vw, 90vw"
-              className="object-cover"
-            />
-          </motion.div>
+          <div className="relative aspect-[16/10] w-full overflow-hidden">
+            {/* Mobile: plain fade - the clip-path unfold below was leaving images invisible on mobile browsers. */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={UNFOLD_TRANSITION}
+              className="absolute inset-0 md:hidden"
+            >
+              <Image
+                src="https://res.cloudinary.com/djpswxx2l/image/upload/w_1600,q_auto,f_auto/v1784463696/view_01_ghg8pq.jpg"
+                alt="Aerial view of a Sindur Group residential project"
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </motion.div>
+
+            {/* Desktop: the original unfold reveal. */}
+            <motion.div
+              initial={{ clipPath: "inset(0 0 0 100%)" }}
+              whileInView={{ clipPath: "inset(0 0 0 0%)" }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={UNFOLD_TRANSITION}
+              className="absolute inset-0 hidden md:block"
+            >
+              <Image
+                src="https://res.cloudinary.com/djpswxx2l/image/upload/w_1600,q_auto,f_auto/v1784463696/view_01_ghg8pq.jpg"
+                alt="Aerial view of a Sindur Group residential project"
+                fill
+                sizes="60vw"
+                className="object-cover"
+              />
+            </motion.div>
+          </div>
 
           <Reveal delay={0.15} className="flex flex-col items-start gap-6">
             <p className="max-w-2xl text-base leading-[1.75] md:text-lg">

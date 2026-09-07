@@ -72,15 +72,29 @@ function ImagePanel({
   delay?: number;
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ ...UNFOLD_TRANSITION, delay }}
-      className={`relative overflow-hidden ${className ?? ""}`}
-    >
-      <Image src={src} alt={alt} fill sizes="(min-width: 768px) 50vw, 100vw" className={imageClassName ?? "object-cover"} />
-    </motion.div>
+    <div className={`relative overflow-hidden ${className ?? ""}`}>
+      {/* Mobile: plain fade - the clip-path unfold below was leaving images invisible on mobile browsers. */}
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ ...UNFOLD_TRANSITION, delay }}
+        className="absolute inset-0 md:hidden"
+      >
+        <Image src={src} alt={alt} fill sizes="100vw" className={imageClassName ?? "object-cover"} />
+      </motion.div>
+
+      {/* Desktop: the original unfold reveal. */}
+      <motion.div
+        initial={{ clipPath: "inset(0 100% 0 0)" }}
+        whileInView={{ clipPath: "inset(0 0% 0 0)" }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ ...UNFOLD_TRANSITION, delay }}
+        className="absolute inset-0 hidden md:block"
+      >
+        <Image src={src} alt={alt} fill sizes="50vw" className={imageClassName ?? "object-cover"} />
+      </motion.div>
+    </div>
   );
 }
 
