@@ -59,7 +59,33 @@ export async function POST(req: NextRequest) {
     const subject = isCareers
       ? `New Careers Application from ${name}`
       : `New Contact Form Submission from ${name}`;
-    const recipient = isCareers ? "info@sindurgroup.com" : "sales@sindurgroup.com";
+
+    // Each form is fully handled by its own Google Workspace mailbox - that
+    // account both receives the internal notification and sends the auto-reply.
+    const mailbox = isCareers
+      ? {
+          user: process.env.CAREERS_EMAIL_USER,
+          pass: process.env.CAREERS_EMAIL_PASS,
+          fromName: "Sindur Group Careers",
+          autoReplySubject: "Thank you for your interest in a career at Sindur Group",
+          autoReplyMessage:
+            "Thank you for your interest in a career at Sindur Group. Our team will review your application and get in touch with you very soon.",
+        }
+      : {
+          user: process.env.SALES_EMAIL_USER,
+          pass: process.env.SALES_EMAIL_PASS,
+          fromName: "Sindur Group",
+          autoReplySubject: "Thank you for contacting Sindur Group",
+          autoReplyMessage: "Thank you for contacting Sindur Group, we'll get in touch with you very soon.",
+        };
+
+    if (!mailbox.user || !mailbox.pass) {
+      console.error(`Missing mailbox credentials for ${isCareers ? "careers" : "contact"} form`);
+      return NextResponse.json(
+        { error: "Email is not configured" },
+        { status: 500 }
+      );
+    }
 
     const detailRows = [
       `<p><strong>Name:</strong> ${name}</p>`,
@@ -79,18 +105,15 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // Internal notification to the Sindur Group team.
-    const notifyTransporter = nodemailer.createTransport({
+    const transporter = nodemailer.createTransport({
       service: "gmail",
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASS,
-      },
+      auth: { user: mailbox.user, pass: mailbox.pass },
     });
 
-    await notifyTransporter.sendMail({
-      from: process.env.GMAIL_USER,
-      to: recipient,
+    // Internal notification, delivered straight into the mailbox itself.
+    await transporter.sendMail({
+      from: `"${mailbox.fromName}" <${mailbox.user}>`,
+      to: mailbox.user,
       replyTo: email,
       subject,
       html: `
@@ -102,42 +125,17 @@ export async function POST(req: NextRequest) {
       attachments,
     });
 
-    // Auto-reply to whoever submitted the form, sent as the relevant
-    // business mailbox. Skipped gracefully if that mailbox's credentials
-    // aren't configured yet, and never blocks the main submission on failure.
-    const autoReply = isCareers
-      ? {
-          user: process.env.CAREERS_EMAIL_USER,
-          pass: process.env.CAREERS_EMAIL_PASS,
-          fromName: "Sindur Group Careers",
-          subject: "Thank you for your interest in a career at Sindur Group",
-          message:
-            "Thank you for your interest in a career at Sindur Group. Our team will review your application and get in touch with you very soon.",
-        }
-      : {
-          user: process.env.SALES_EMAIL_USER,
-          pass: process.env.SALES_EMAIL_PASS,
-          fromName: "Sindur Group",
-          subject: "Thank you for contacting Sindur Group",
-          message: "Thank you for contacting Sindur Group, we'll get in touch with you very soon.",
-        };
-
-    if (autoReply.user && autoReply.pass) {
-      try {
-        const autoReplyTransporter = nodemailer.createTransport({
-          service: "gmail",
-          auth: { user: autoReply.user, pass: autoReply.pass },
-        });
-
-        await autoReplyTransporter.sendMail({
-          from: `"${autoReply.fromName}" <${autoReply.user}>`,
-          to: email,
-          subject: autoReply.subject,
-          html: autoReplyHtml(autoReply.subject, autoReply.message),
-        });
-      } catch (autoReplyError) {
-        console.error("Auto-reply email error:", autoReplyError);
-      }
+    // Auto-reply to whoever submitted the form. Failure here never blocks
+    // the main submission - the team notification above already went through.
+    try {
+      await transporter.sendMail({
+        from: `"${mailbox.fromName}" <${mailbox.user}>`,
+        to: email,
+        subject: mailbox.autoReplySubject,
+        html: autoReplyHtml(mailbox.autoReplySubject, mailbox.autoReplyMessage),
+      });
+    } catch (autoReplyError) {
+      console.error("Auto-reply email error:", autoReplyError);
     }
 
     return NextResponse.json({ success: true }, { status: 200 });
