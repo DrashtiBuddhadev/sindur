@@ -1,6 +1,42 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+function autoReplyHtml(heading: string, message: string) {
+  return `
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f4f1eb; padding: 40px 16px; font-family: Arial, Helvetica, sans-serif;">
+      <tr>
+        <td align="center">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width: 520px; background-color: #ffffff;">
+            <tr>
+              <td style="background-color: #111111; padding: 22px 32px;">
+                <span style="font-size: 14px; font-weight: bold; letter-spacing: 2px; color: #ffffff; text-transform: uppercase;">Sindur Group</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 40px 32px 24px;">
+                <h1 style="margin: 0 0 16px; font-size: 22px; line-height: 1.3; color: #111111; font-weight: 600;">${heading}</h1>
+                <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #555555;">${message}</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 0 32px 36px;">
+                <a href="tel:+917788833307" style="display: inline-block; background-color: #1d5a8c; color: #ffffff; text-decoration: none; padding: 12px 24px; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;">Call Us: +91 77888 33307</a>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 20px 32px; border-top: 1px solid #eeeeee;">
+                <p style="margin: 0; font-size: 12px; color: #999999; line-height: 1.6;">
+                  Sindur Group &middot; Naranpura, Ahmedabad, Gujarat
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  `;
+}
+
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
@@ -23,6 +59,7 @@ export async function POST(req: NextRequest) {
     const subject = isCareers
       ? `New Careers Application from ${name}`
       : `New Contact Form Submission from ${name}`;
+    const recipient = isCareers ? "info@sindurgroup.com" : "sales@sindurgroup.com";
 
     const detailRows = [
       `<p><strong>Name:</strong> ${name}</p>`,
@@ -42,7 +79,8 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    const transporter = nodemailer.createTransport({
+    // Internal notification to the Sindur Group team.
+    const notifyTransporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
         user: process.env.GMAIL_USER,
@@ -50,9 +88,9 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    await transporter.sendMail({
+    await notifyTransporter.sendMail({
       from: process.env.GMAIL_USER,
-      to: process.env.GMAIL_USER,
+      to: recipient,
       replyTo: email,
       subject,
       html: `
@@ -63,6 +101,44 @@ export async function POST(req: NextRequest) {
       `,
       attachments,
     });
+
+    // Auto-reply to whoever submitted the form, sent as the relevant
+    // business mailbox. Skipped gracefully if that mailbox's credentials
+    // aren't configured yet, and never blocks the main submission on failure.
+    const autoReply = isCareers
+      ? {
+          user: process.env.CAREERS_EMAIL_USER,
+          pass: process.env.CAREERS_EMAIL_PASS,
+          fromName: "Sindur Group Careers",
+          subject: "Thank you for your interest in a career at Sindur Group",
+          message:
+            "Thank you for your interest in a career at Sindur Group. Our team will review your application and get in touch with you very soon.",
+        }
+      : {
+          user: process.env.SALES_EMAIL_USER,
+          pass: process.env.SALES_EMAIL_PASS,
+          fromName: "Sindur Group",
+          subject: "Thank you for contacting Sindur Group",
+          message: "Thank you for contacting Sindur Group, we'll get in touch with you very soon.",
+        };
+
+    if (autoReply.user && autoReply.pass) {
+      try {
+        const autoReplyTransporter = nodemailer.createTransport({
+          service: "gmail",
+          auth: { user: autoReply.user, pass: autoReply.pass },
+        });
+
+        await autoReplyTransporter.sendMail({
+          from: `"${autoReply.fromName}" <${autoReply.user}>`,
+          to: email,
+          subject: autoReply.subject,
+          html: autoReplyHtml(autoReply.subject, autoReply.message),
+        });
+      } catch (autoReplyError) {
+        console.error("Auto-reply email error:", autoReplyError);
+      }
+    }
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
