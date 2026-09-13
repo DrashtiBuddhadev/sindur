@@ -18,6 +18,10 @@ export function WhoWeAre() {
             <span className="text-neutral-300">Creating Trust. Shaping Better Lifestyles.</span>
           </h2>
 
+          <p className="mt-6 max-w-xs font-display text-lg font-semibold leading-snug text-[var(--color-primary)] md:text-xl">
+            Build with purpose. Deliver with responsibility. Earn trust for life.
+          </p>
+
           <div className="relative mt-10 aspect-[3/4] w-full max-w-xs overflow-hidden md:mt-auto md:max-w-none">
             {/* Mobile: plain fade - the clip-path unfold below was leaving images invisible on mobile browsers. */}
             <motion.div
@@ -28,7 +32,7 @@ export function WhoWeAre() {
               className="absolute inset-0 md:hidden"
             >
               <Image
-                src="https://res.cloudinary.com/djpswxx2l/image/upload/w_1200,q_auto,f_auto/v1784461257/Nightview_ycklsf.jpg"
+                src="/images/real/about-left.jpeg"
                 alt="Inside a Sindur Group residence"
                 fill
                 sizes="100vw"
@@ -45,7 +49,7 @@ export function WhoWeAre() {
               className="absolute inset-0 hidden md:block"
             >
               <Image
-                src="https://res.cloudinary.com/djpswxx2l/image/upload/w_1200,q_auto,f_auto/v1784461257/Nightview_ycklsf.jpg"
+                src="/images/real/about-left.jpeg"
                 alt="Inside a Sindur Group residence"
                 fill
                 sizes="30vw"
@@ -72,7 +76,7 @@ export function WhoWeAre() {
               className="absolute inset-0 md:hidden"
             >
               <Image
-                src="https://res.cloudinary.com/djpswxx2l/image/upload/w_1600,q_auto,f_auto/v1784463696/view_01_ghg8pq.jpg"
+                src="/images/real/about-right.jpeg"
                 alt="Aerial view of a Sindur Group residential project"
                 fill
                 sizes="100vw"
@@ -89,7 +93,7 @@ export function WhoWeAre() {
               className="absolute inset-0 hidden md:block"
             >
               <Image
-                src="https://res.cloudinary.com/djpswxx2l/image/upload/w_1600,q_auto,f_auto/v1784463696/view_01_ghg8pq.jpg"
+                src="/images/real/about-right.jpeg"
                 alt="Aerial view of a Sindur Group residential project"
                 fill
                 sizes="60vw"

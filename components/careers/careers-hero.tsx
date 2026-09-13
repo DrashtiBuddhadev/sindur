@@ -13,10 +13,10 @@ export function CareersHero() {
         className="mt-[20%] block h-auto w-full md:hidden"
       />
       <Image
-        src="/images/real/career.jpeg"
+        src="/images/real/careersBanner.jpeg"
         alt="Create impact - careers at SINDUR CN GROUP"
-        width={1920}
-        height={1080}
+        width={3840}
+        height={2160}
         priority
         sizes="100vw"
         className="hidden h-auto w-full md:block"

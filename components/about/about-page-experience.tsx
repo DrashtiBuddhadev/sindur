@@ -110,8 +110,8 @@ function AboutHero() {
     <section ref={sectionRef} className="relative w-full overflow-hidden bg-white">
       <motion.div style={{ y }}>
         <Image
-          src="/images/real/aboutus_mobile.jpeg"
-          alt="Unlocking value with a classic key - SINDUR CN GROUP"
+          src="/images/real/aboutusMobile.jpeg"
+          alt="Define Future - SINDUR CN GROUP"
           width={1080}
           height={1920}
           priority
@@ -119,10 +119,10 @@ function AboutHero() {
           className="block h-auto w-full md:hidden"
         />
         <Image
-          src="/images/real/about us.jpeg"
-          alt="Unlocking value with a classic key - SINDUR CN GROUP"
-          width={1920}
-          height={1080}
+          src="/images/real/aboutUsBanner.jpeg"
+          alt="Define Future - SINDUR CN GROUP"
+          width={7680}
+          height={4320}
           priority
           sizes="100vw"
           className="hidden h-auto w-full md:block"
@@ -321,7 +321,7 @@ export function AboutPageExperience() {
 
           <div className="hidden md:flex md:w-1/2 md:justify-end md:self-end">
             <Image
-              src="/images/real/flats2.png"
+              src="/images/real/flats.png"
               alt="A SINDUR CN GROUP residential building"
               width={447}
               height={559}

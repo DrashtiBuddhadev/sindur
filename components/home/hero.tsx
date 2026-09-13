@@ -24,7 +24,7 @@ export function Hero() {
           className="object-cover object-[center_60%] md:hidden"
         />
         <Image
-          src="/images/real/main banner1.jpeg"
+          src="/images/real/mainBanner1.jpeg"
           alt="Sindur Group — landmark residential and commercial developments across Ahmedabad"
           fill
           priority

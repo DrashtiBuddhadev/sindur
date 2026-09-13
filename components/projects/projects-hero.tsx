@@ -4,7 +4,7 @@ export function ProjectsHero() {
   return (
     <section className="relative w-full overflow-hidden bg-white">
       <Image
-        src="/images/real/projects_mobile.jpeg"
+        src="/images/real/projectsMobile.jpeg"
         alt="Iconic spaces - projects by SINDUR CN GROUP"
         width={1080}
         height={1920}
@@ -13,7 +13,7 @@ export function ProjectsHero() {
         className="block h-auto w-full md:hidden"
       />
       <Image
-        src="/images/real/projects.jpeg"
+        src="/images/real/projectsbanner.jpeg"
         alt="Iconic spaces - projects by SINDUR CN GROUP"
         width={1920}
         height={1080}

@@ -29,7 +29,7 @@ const CATEGORIES = [
   {
     label: "Plots",
     copy: "Well-located land parcels just outside the city for those who want to build their own vision.",
-    image: "/images/real/plots.jpeg",
+    image: "/images/real/plots1.jpeg",
     href: "/projects#plots",
   },
 ];
