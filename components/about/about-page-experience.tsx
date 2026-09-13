@@ -160,9 +160,7 @@ export function AboutPageExperience() {
             />
             <Reveal delay={0.1} className="grid grid-cols-1 gap-3 md:grid-cols-2">
               <p className="bg-white p-6 text-sm leading-[1.8] text-neutral-500 md:p-7 md:text-base">
-                Since our establishment in 2014, SINDUR CN GROUP has steadily built its presence
-                across Naranpura and surrounding areas with one philosophy at the centre of
-                everything we do.
+                Since our establishment in 2014, SINDUR CN GROUP has grown from its roots in Naranpura to build a trusted presence across Ahmedabad, guided by one philosophy at the centre of everything we do.
               </p>
               <p className="bg-[#f4f1eb] p-6 text-sm leading-[1.8] text-neutral-500 md:p-7 md:text-base">
                 Every completed project represents more than another milestone. It represents
