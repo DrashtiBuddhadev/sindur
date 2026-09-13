@@ -87,7 +87,7 @@ export function ContactForm({ variant = "contact" }: { variant?: "contact" | "ca
           <div className="mt-10 flex flex-col gap-6 border-t border-[var(--color-border)] pt-8">
             <div>
               <p className={labelClass}>Call Us</p>
-              <p className="mt-1 text-sm text-[var(--color-ink)]">+91 77888 11137</p>
+              <p className="mt-1 text-sm text-[var(--color-ink)]">+91 77888 33307</p>
             </div>
             <div>
               <p className={labelClass}>Visit Us</p>
