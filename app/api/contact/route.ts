@@ -132,6 +132,7 @@ export async function POST(req: NextRequest) {
         from: `"${mailbox.fromName}" <${mailbox.user}>`,
         to: email,
         subject: mailbox.autoReplySubject,
+        text: `${mailbox.autoReplyMessage}\n\nCall us: +91 77888 33307\nSindur Group, Naranpura, Ahmedabad, Gujarat`,
         html: autoReplyHtml(mailbox.autoReplySubject, mailbox.autoReplyMessage),
       });
     } catch (autoReplyError) {
