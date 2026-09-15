@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { SmoothScroll } from "@/components/motion/smooth-scroll";
+import { FloatingContact } from "@/components/layout/floating-contact";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -35,6 +36,7 @@ export default function RootLayout({
       <body className="font-sans antialiased" suppressHydrationWarning>
         <SmoothScroll />
         <ThemeProvider>{children}</ThemeProvider>
+        <FloatingContact />
       </body>
     </html>
   );
