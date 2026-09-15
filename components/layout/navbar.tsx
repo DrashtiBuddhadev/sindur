@@ -56,19 +56,18 @@ export function Navbar({ overDarkHero = false }: { overDarkHero?: boolean }) {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div
-        className={`relative flex items-center justify-between px-6 py-4 transition-colors duration-300 md:px-12 lg:px-16 ${chrome}`}
+        className={`relative flex items-center justify-between px-6 py-[6px] transition-colors duration-300 md:px-12 lg:px-16 ${chrome}`}
       >
         <Link
           href="/"
-          className="relative h-9 w-[130px] shrink-0 overflow-hidden md:h-10 md:w-[148px]"
+          className="relative h-[46px] w-[153px] shrink-0 overflow-hidden md:h-[59px] md:w-[194px]"
           aria-label="Sindur Group home"
         >
           <Image
-            src="/sindur_logo.png"
+            src="/images/real/logo.png"
             alt="Sindur Group"
-            width={3789}
-            height={1580}
-            className={`absolute left-0 top-0 h-[148%] w-auto max-w-none object-contain transition-[filter] duration-300 ${
+            fill
+            className={`object-contain object-left transition-[filter] duration-300 ${
               logoInverted ? "brightness-0 invert" : ""
             }`}
             priority
